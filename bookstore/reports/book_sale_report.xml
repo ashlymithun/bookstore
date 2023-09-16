@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_book_sale_report_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <table class="table table-bordered w-100">
+                            <thead>
+                               <tr>
+                                    <th>Name of Book</th>
+                                    <th>Number of Copies</th>
+                               </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="rec" t-as="x">
+                                    <tr>
+                                        <td><t t-esc="x"/></td>
+                                        <td><t t-esc="rec[x]"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+    </template>
+    <report
+            id="action_report_bookstore_book_sale"
+            model="bookstore.lines"
+            string="Book Report"
+            menu="False"
+            report_type="qweb-html"
+            name="bookstore.report_book_sale_report_template"
+            file="bookstore.report_book_sale_report_template"
+        />
+</odoo>

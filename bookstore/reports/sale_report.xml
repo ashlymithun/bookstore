@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+        <template id="report_sale_report_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                     <t t-if="not rec">
+                         <p class="text-danger text-center w-100">No Data available.</p>
+                    </t>
+                        <t t-else="">
+                         <table class="table w-100 table-striped table-bordered">
+                        <thead>
+                         <tr>
+                             <th>Name of Customer</th>
+                             <th>Issued Date</th>
+                             <th>Librarian</th>
+                         </tr>
+                        </thead>
+                        <tbody>
+                          <t t-foreach="rec" t-as="x">
+                          <tr>
+                              <td><t t-esc="x['name'][1]"/></td>
+                              <td><t t-esc="x['date_of_issue']"/></td>
+                              <td><t t-esc="x['create_uid'][1]"/></td>
+                          </tr>
+                        </t>
+                        </tbody>
+                    </table>
+                    </t>
+
+
+                    </div>
+                </t>
+            </t>
+        </template>
+
+        <report
+            id="action_report_bookstore_sale"
+            model="bookstore.store"
+            string="Bookstore Report"
+            menu="False"
+            report_type="qweb-html"
+            name="bookstore.report_sale_report_template"
+            file="bookstore.report_sale_report_template"
+        />
+
+</odoo>

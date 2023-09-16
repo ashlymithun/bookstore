@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_category_book_report_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <table class="table table-bordered w-100">
+                            <thead>
+                                <tr>
+                                   <th>Name</th>
+                                    <th>Author</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="categories" t-as="category">
+                                    <tr>
+                                        <th colspan="3"><t t-esc="category['name']"/></th>
+                                    </tr>
+                                    <t t-foreach="books" t-as="book">
+                                        <t t-if="category['id'] == book['category_id']">
+                                            <tr>
+                                                <td class="pl-5"><t t-esc="book['name']"/></td>
+                                                <td><t t-esc="book['author']"/></td>
+                                                <td><t t-esc="book['description']"/></td>
+                                            </tr>
+                                        </t>
+                                    </t>
+                                </t>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+    </template>
+    <report
+            id="action_report_bookstore_category_book_report"
+            model="bookstore.book"
+            string="Category Wise Book Report"
+            menu="False"
+            report_type="qweb-html"
+            name="bookstore.report_category_book_report_template"
+            file="bookstore.report_category_book_report_template"
+        />
+    <record model="ir.actions.server" id="action_category_book_records">
+            <field name="name">Category Report</field>
+            <field name="model_id" ref="model_bookstore_category_report"/>
+            <field name="binding_model_id" ref="model_bookstore_category_report" />
+            <field name="state">code</field>
+            <field name="code">
+               action = model.category_report()
+            </field>
+    </record>
+    <menuitem id="bookstore_category_report"
+              name="Category Wise Book Report"
+              action="action_category_book_records"
+              parent="bookstore_report"
+              sequence="18"/>
+</odoo>

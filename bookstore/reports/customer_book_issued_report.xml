@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_customer_issued_book_report_template">
+            <t t-call="web.html_container">
+                <t t-call="web.basic_layout">
+                    <div class="page">
+                        <header>
+                            <h3 class="text-center w-100">My company</h3>
+                        </header>
+                        <h1><t t-esc="customer"/></h1>
+                        <h6><t t-esc="date_of_issue"/></h6>
+                        <table class="table table-bordered w-100">
+                            <thead>
+                                <tr>
+                                   <th>Name of book</th>
+                                    <th>Duration</th>
+                                    <th>Available</th>
+                                    <th>Number of copies require</th>
+                                    <th>Date of Return</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    <t t-foreach="books" t-as="book">
+                                            <tr>
+                                                <td><t t-esc="book['name']"/></td>
+                                                <td><t t-esc="book['duration']"/></td>
+                                                <td><t t-esc="book['available']"/></td>
+                                                <td><t t-esc="book['count']"/></td>
+                                                <td><t t-esc="book['date_of_return']"/></td>
+                                            </tr>
+                                        </t>
+                            </tbody>
+                        </table>
+                        <footer>
+                            <p class="text-center">Thank you</p>
+                        </footer>
+                    </div>
+                </t>
+            </t>
+    </template>
+    <report
+            id="action_report_customer_issued_book_report"
+            model="bookstore.store"
+            string="Customer Wise Book Report"
+            report_type="qweb-pdf"
+            name="bookstore.report_customer_issued_book_report_template"
+            file="bookstore.report_customer_issued_book_report_template"
+    />
+</odoo>

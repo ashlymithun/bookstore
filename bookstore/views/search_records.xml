@@ -1,0 +1,19 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<odoo>
+
+
+<record model="ir.actions.server" id="action_search_records">
+            <field name="name">Search</field>
+            <field name="model_id" ref="model_bookstore_search"/>
+            <field name="binding_model_id" ref="model_bookstore_search" />
+            <field name="state">code</field>
+            <field name="code">
+               action = model.search_methods()
+            </field>
+        </record>
+    <menuitem id="bookstore_search"
+              name="Search"
+              action="action_search_records"
+              parent="bookstore_root"
+              sequence="20"/>
+</odoo>

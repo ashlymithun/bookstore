@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="bookstore_category_view_tree" model="ir.ui.view">
+        <field name="name">category.tree</field>
+        <field name="model">bookstore.category</field>
+        <field name="arch" type="xml">
+            <tree default_order="name">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="bookstore_category_view_form" model="ir.ui.view">
+        <field name="name">category.form</field>
+        <field name="model">bookstore.category</field>
+        <field name="arch" type="xml">
+            <form string="bookstore category">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="active"/>
+                    </group>
+                    <notebook>
+                        <page name="books" string="Books">
+                            <field name="book_ids">
+                                <tree editable="top">
+                                    <field name="name"/>
+                                    <field name="author_id"/>
+                                    <field name="description"/>
+                                    <field name="image"/>
+
+                                </tree>
+                            </field>
+
+                        </page>
+                    </notebook>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+    <record id="bookstore_category_template_action" model="ir.actions.act_window">
+        <field name="name">Category</field>
+        <field name="res_model">bookstore.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="bookstore_category"
+              name="Category"
+              action="bookstore_category_template_action"
+              active="True"
+              parent="bookstore_master"
+              sequence="6"/>
+</odoo>

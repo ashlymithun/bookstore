@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_bookstore_store,bookstore.store,model_bookstore_store,,1,1,1,1
+access_bookstore_line,bookstore.lines,model_bookstore_lines,,1,1,1,1
+access_bookstore_category,bookstore.category,model_bookstore_category,,1,1,1,1
+access_bookstore_author,bookstore.author,model_bookstore_author,,1,1,1,1
+access_bookstore_book,bookstore.book,model_bookstore_book,,1,1,1,1
+access_bookstore_search,bookstore.search,model_bookstore_search,,1,1,1,1
+
+access_bookstore_category_report,bookstore.category.report,model_bookstore_category_report,,1,1,1,1
+access_bookstore_sale_report_wizard,bookstore.sale.report.wizard,model_bookstore_sale_report,,1,1,1,1
+access_bookstore_book_sale_report_wizard,bookstore.book.sale.report.wizard,model_bookstore_book_sale_report,,1,1,1,1
